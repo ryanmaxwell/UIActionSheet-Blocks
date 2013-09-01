@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "Category on UIActionSheet to use inline block callbacks instead of delegate callbacks."
 
   s.description  = <<-DESC
-                   UIActionSheet was created in a time before blocks, ARC, and judging by it’s naming - touch screens too. Who “clicks” on an action sheet anyway?
+                   UIActionSheet was created in a time before blocks, ARC, and judging by its naming - touch screens too. Who “clicks” on an action sheet anyway?
                    
                    Lets modernize this shizzle with some blocks goodness.
                    
