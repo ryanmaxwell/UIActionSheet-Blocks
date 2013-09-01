@@ -17,21 +17,21 @@ typedef void (^UIActionSheetCompletionBlock) (UIActionSheet *actionSheet, NSInte
      cancelButtonTitle:(NSString *)cancelButtonTitle
 destructiveButtonTitle:(NSString *)destructiveButtonTitle
      otherButtonTitles:(NSArray *)otherButtonTitles
-            completion:(UIActionSheetCompletionBlock)completion;
+              tapBlock:(UIActionSheetCompletionBlock)tapBlock;
 
 + (void)showFromToolbar:(UIToolbar *)toolbar
               withTitle:(NSString *)title
       cancelButtonTitle:(NSString *)cancelButtonTitle
  destructiveButtonTitle:(NSString *)destructiveButtonTitle
       otherButtonTitles:(NSArray *)otherButtonTitles
-             completion:(UIActionSheetCompletionBlock)completion;
+               tapBlock:(UIActionSheetCompletionBlock)tapBlock;
 
 + (void)showInView:(UIView *)view
          withTitle:(NSString *)title
  cancelButtonTitle:(NSString *)cancelButtonTitle
 destructiveButtonTitle:(NSString *)destructiveButtonTitle
  otherButtonTitles:(NSArray *)otherButtonTitles
-        completion:(UIActionSheetCompletionBlock)completion;
+          tapBlock:(UIActionSheetCompletionBlock)tapBlock;
 
 + (void)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem
                      animated:(BOOL)animated
@@ -39,7 +39,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
             cancelButtonTitle:(NSString *)cancelButtonTitle
        destructiveButtonTitle:(NSString *)destructiveButtonTitle
             otherButtonTitles:(NSArray *)otherButtonTitles
-                   completion:(UIActionSheetCompletionBlock)completion;
+                     tapBlock:(UIActionSheetCompletionBlock)tapBlock;
 
 + (void)showFromRect:(CGRect)rect
               inView:(UIView *)view
@@ -48,6 +48,6 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
    cancelButtonTitle:(NSString *)cancelButtonTitle
 destructiveButtonTitle:(NSString *)destructiveButtonTitle
    otherButtonTitles:(NSArray *)otherButtonTitles
-          completion:(UIActionSheetCompletionBlock)completion;
+            tapBlock:(UIActionSheetCompletionBlock)tapBlock;
 
 @end

@@ -75,7 +75,7 @@
      cancelButtonTitle:(NSString *)cancelButtonTitle
 destructiveButtonTitle:(NSString *)destructiveButtonTitle
      otherButtonTitles:(NSArray *)otherButtonTitles
-            completion:(UIActionSheetCompletionBlock)completion {
+              tapBlock:(UIActionSheetCompletionBlock)tapBlock {
     
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title
                                                     delegate:nil
@@ -87,9 +87,9 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         [actionSheet addButtonWithTitle:buttonTitle];
     }
     
-    if (completion) {
+    if (tapBlock) {
         actionSheet.delegate = [UIActionSheetBlocksManager sharedInstance];
-        [[UIActionSheetBlocksManager sharedInstance] setCompletionBlock:completion forActionSheet:actionSheet];
+        [[UIActionSheetBlocksManager sharedInstance] setCompletionBlock:tapBlock forActionSheet:actionSheet];
     }
     
     [actionSheet showFromTabBar:tabBar];
@@ -100,7 +100,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
       cancelButtonTitle:(NSString *)cancelButtonTitle
  destructiveButtonTitle:(NSString *)destructiveButtonTitle
       otherButtonTitles:(NSArray *)otherButtonTitles
-             completion:(UIActionSheetCompletionBlock)completion {
+               tapBlock:(UIActionSheetCompletionBlock)tapBlock {
     
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title
                                                     delegate:nil
@@ -112,9 +112,9 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         [actionSheet addButtonWithTitle:buttonTitle];
     }
     
-    if (completion) {
+    if (tapBlock) {
         actionSheet.delegate = [UIActionSheetBlocksManager sharedInstance];
-        [[UIActionSheetBlocksManager sharedInstance] setCompletionBlock:completion forActionSheet:actionSheet];
+        [[UIActionSheetBlocksManager sharedInstance] setCompletionBlock:tapBlock forActionSheet:actionSheet];
     }
     
     [actionSheet showFromToolbar:toolbar];
@@ -125,7 +125,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
  cancelButtonTitle:(NSString *)cancelButtonTitle
 destructiveButtonTitle:(NSString *)destructiveButtonTitle
  otherButtonTitles:(NSArray *)otherButtonTitles
-        completion:(UIActionSheetCompletionBlock)completion {
+          tapBlock:(UIActionSheetCompletionBlock)tapBlock {
     
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title
                                                     delegate:nil
@@ -137,9 +137,9 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         [actionSheet addButtonWithTitle:buttonTitle];
     }
     
-    if (completion) {
+    if (tapBlock) {
         actionSheet.delegate = [UIActionSheetBlocksManager sharedInstance];
-        [[UIActionSheetBlocksManager sharedInstance] setCompletionBlock:completion forActionSheet:actionSheet];
+        [[UIActionSheetBlocksManager sharedInstance] setCompletionBlock:tapBlock forActionSheet:actionSheet];
     }
     
     [actionSheet showInView:view];
@@ -151,7 +151,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
             cancelButtonTitle:(NSString *)cancelButtonTitle
        destructiveButtonTitle:(NSString *)destructiveButtonTitle
             otherButtonTitles:(NSArray *)otherButtonTitles
-                   completion:(UIActionSheetCompletionBlock)completion {
+                     tapBlock:(UIActionSheetCompletionBlock)tapBlock {
     
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title
                                                     delegate:nil
@@ -163,9 +163,9 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         [actionSheet addButtonWithTitle:buttonTitle];
     }
     
-    if (completion) {
+    if (tapBlock) {
         actionSheet.delegate = [UIActionSheetBlocksManager sharedInstance];
-        [[UIActionSheetBlocksManager sharedInstance] setCompletionBlock:completion forActionSheet:actionSheet];
+        [[UIActionSheetBlocksManager sharedInstance] setCompletionBlock:tapBlock forActionSheet:actionSheet];
     }
     
     [actionSheet showFromBarButtonItem:barButtonItem animated:animated];
@@ -178,7 +178,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
    cancelButtonTitle:(NSString *)cancelButtonTitle
 destructiveButtonTitle:(NSString *)destructiveButtonTitle
    otherButtonTitles:(NSArray *)otherButtonTitles
-          completion:(UIActionSheetCompletionBlock)completion {
+            tapBlock:(UIActionSheetCompletionBlock)tapBlock {
     
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title
                                                     delegate:nil
@@ -190,9 +190,9 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         [actionSheet addButtonWithTitle:buttonTitle];
     }
     
-    if (completion) {
+    if (tapBlock) {
         actionSheet.delegate = [UIActionSheetBlocksManager sharedInstance];
-        [[UIActionSheetBlocksManager sharedInstance] setCompletionBlock:completion forActionSheet:actionSheet];
+        [[UIActionSheetBlocksManager sharedInstance] setCompletionBlock:tapBlock forActionSheet:actionSheet];
     }
     
     [actionSheet showFromRect:rect inView:view animated:animated];

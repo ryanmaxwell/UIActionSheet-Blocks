@@ -19,7 +19,7 @@ Create and show the action sheet in a single call:
  cancelButtonTitle:(NSString *)cancelButtonTitle
 destructiveButtonTitle:(NSString *)destructiveButtonTitle
  otherButtonTitles:(NSArray *)otherButtonTitles
-        completion:(UIActionSheetCompletionBlock)completion;
+          tapBlock:(UIActionSheetCompletionBlock)tapBlock;
 ```
 
 The full suite of action methods are supported, including `showFromTabBar:`, `showFromToolbar:`, `showInView:`, `showFromBarButtonItem:animated:` and `showFromRect:inView:animated`.
