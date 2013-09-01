@@ -10,14 +10,14 @@
 
 #import <objc/runtime.h>
 
-static char kUIActionSheetOriginalDelegateKey;
+static const void *UIActionSheetOriginalDelegateKey = &UIActionSheetOriginalDelegateKey;
 
-static char kUIActionSheetTapBlockKey;
-static char kUIActionSheetWillPresentBlockKey;
-static char kUIActionSheetDidPresentBlockKey;
-static char kUIActionSheetWillDismissBlockKey;
-static char kUIActionSheetDidDismissBlockKey;
-static char kUIActionSheetCancelBlockKey;
+static const void *UIActionSheetTapBlockKey         = &UIActionSheetTapBlockKey;
+static const void *UIActionSheetWillPresentBlockKey = &UIActionSheetWillPresentBlockKey;
+static const void *UIActionSheetDidPresentBlockKey  = &UIActionSheetDidPresentBlockKey;
+static const void *UIActionSheetWillDismissBlockKey = &UIActionSheetWillDismissBlockKey;
+static const void *UIActionSheetDidDismissBlockKey  = &UIActionSheetDidDismissBlockKey;
+static const void *UIActionSheetCancelBlockKey      = &UIActionSheetCancelBlockKey;
 
 @implementation UIActionSheet (Blocks)
 
@@ -146,88 +146,65 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
 
 #pragma mark -
 
+- (void)_checkActionSheetDelegate {
+    if (self.delegate != (id<UIActionSheetDelegate>)self) {
+        objc_setAssociatedObject(self, UIActionSheetOriginalDelegateKey, self.delegate, OBJC_ASSOCIATION_ASSIGN);
+        self.delegate = (id<UIActionSheetDelegate>)self;
+    }
+}
+
 - (UIActionSheetCompletionBlock)tapBlock {
-    return objc_getAssociatedObject(self, &kUIActionSheetTapBlockKey);
+    return objc_getAssociatedObject(self, UIActionSheetTapBlockKey);
 }
 
 - (void)setTapBlock:(UIActionSheetCompletionBlock)tapBlock {
-    
-    if (self.delegate != (id<UIActionSheetDelegate>)self) {
-        objc_setAssociatedObject(self, &kUIActionSheetOriginalDelegateKey, self.delegate, OBJC_ASSOCIATION_ASSIGN);
-        self.delegate = (id<UIActionSheetDelegate>)self;
-    }
-    
-    objc_setAssociatedObject(self, &kUIActionSheetTapBlockKey, tapBlock, OBJC_ASSOCIATION_COPY);
+    [self _checkActionSheetDelegate];
+    objc_setAssociatedObject(self, UIActionSheetTapBlockKey, tapBlock, OBJC_ASSOCIATION_COPY);
 }
 
 - (UIActionSheetCompletionBlock)willDismissBlock {
-    return objc_getAssociatedObject(self, &kUIActionSheetWillDismissBlockKey);
+    return objc_getAssociatedObject(self, UIActionSheetWillDismissBlockKey);
 }
 
 - (void)setWillDismissBlock:(UIActionSheetCompletionBlock)willDismissBlock {
-    
-    if (self.delegate != (id<UIActionSheetDelegate>)self) {
-        objc_setAssociatedObject(self, &kUIActionSheetOriginalDelegateKey, self.delegate, OBJC_ASSOCIATION_ASSIGN);
-        self.delegate = (id<UIActionSheetDelegate>)self;
-    }
-    
-    objc_setAssociatedObject(self, &kUIActionSheetWillDismissBlockKey, willDismissBlock, OBJC_ASSOCIATION_COPY);
+    [self _checkActionSheetDelegate];
+    objc_setAssociatedObject(self, UIActionSheetWillDismissBlockKey, willDismissBlock, OBJC_ASSOCIATION_COPY);
 }
 
 - (UIActionSheetCompletionBlock)didDismissBlock {
-    return objc_getAssociatedObject(self, &kUIActionSheetDidDismissBlockKey);
+    return objc_getAssociatedObject(self, UIActionSheetDidDismissBlockKey);
 }
 
 - (void)setDidDismissBlock:(UIActionSheetCompletionBlock)didDismissBlock {
-    
-    if (self.delegate != (id<UIActionSheetDelegate>)self) {
-        objc_setAssociatedObject(self, &kUIActionSheetOriginalDelegateKey, self.delegate, OBJC_ASSOCIATION_ASSIGN);
-        self.delegate = (id<UIActionSheetDelegate>)self;
-    }
-    
-    objc_setAssociatedObject(self, &kUIActionSheetDidDismissBlockKey, didDismissBlock, OBJC_ASSOCIATION_COPY);
+    [self _checkActionSheetDelegate];
+    objc_setAssociatedObject(self, UIActionSheetDidDismissBlockKey, didDismissBlock, OBJC_ASSOCIATION_COPY);
 }
 
 - (UIActionSheetBlock)willPresentBlock {
-    return objc_getAssociatedObject(self, &kUIActionSheetWillPresentBlockKey);
+    return objc_getAssociatedObject(self, UIActionSheetWillPresentBlockKey);
 }
 
 - (void)setWillPresentBlock:(UIActionSheetBlock)willPresentBlock {
-    
-    if (self.delegate != (id<UIActionSheetDelegate>)self) {
-        objc_setAssociatedObject(self, &kUIActionSheetOriginalDelegateKey, self.delegate, OBJC_ASSOCIATION_ASSIGN);
-        self.delegate = (id<UIActionSheetDelegate>)self;
-    }
-    
-    objc_setAssociatedObject(self, &kUIActionSheetWillPresentBlockKey, willPresentBlock, OBJC_ASSOCIATION_COPY);
+    [self _checkActionSheetDelegate];
+    objc_setAssociatedObject(self, UIActionSheetWillPresentBlockKey, willPresentBlock, OBJC_ASSOCIATION_COPY);
 }
 
 - (UIActionSheetBlock)didPresentBlock {
-    return objc_getAssociatedObject(self, &kUIActionSheetDidPresentBlockKey);
+    return objc_getAssociatedObject(self, UIActionSheetDidPresentBlockKey);
 }
 
 - (void)setDidPresentBlock:(UIActionSheetBlock)didPresentBlock {
-    
-    if (self.delegate != (id<UIActionSheetDelegate>)self) {
-        objc_setAssociatedObject(self, &kUIActionSheetOriginalDelegateKey, self.delegate, OBJC_ASSOCIATION_ASSIGN);
-        self.delegate = (id<UIActionSheetDelegate>)self;
-    }
-    
-    objc_setAssociatedObject(self, &kUIActionSheetDidPresentBlockKey, didPresentBlock, OBJC_ASSOCIATION_COPY);
+    [self _checkActionSheetDelegate];
+    objc_setAssociatedObject(self, UIActionSheetDidPresentBlockKey, didPresentBlock, OBJC_ASSOCIATION_COPY);
 }
 
 - (UIActionSheetBlock)cancelBlock {
-    return objc_getAssociatedObject(self, &kUIActionSheetCancelBlockKey);
+    return objc_getAssociatedObject(self, UIActionSheetCancelBlockKey);
 }
 
 - (void)setCancelBlock:(UIActionSheetBlock)cancelBlock {
-    
-    if (self.delegate != (id<UIActionSheetDelegate>)self) {
-        objc_setAssociatedObject(self, &kUIActionSheetOriginalDelegateKey, self.delegate, OBJC_ASSOCIATION_ASSIGN);
-        self.delegate = (id<UIActionSheetDelegate>)self;
-    }
-    
-    objc_setAssociatedObject(self, &kUIActionSheetCancelBlockKey, cancelBlock, OBJC_ASSOCIATION_COPY);
+    [self _checkActionSheetDelegate];
+    objc_setAssociatedObject(self, UIActionSheetCancelBlockKey, cancelBlock, OBJC_ASSOCIATION_COPY);
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -239,7 +216,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         completion(actionSheet);
     }
     
-    id originalDelegate = objc_getAssociatedObject(self, &kUIActionSheetOriginalDelegateKey);
+    id originalDelegate = objc_getAssociatedObject(self, UIActionSheetOriginalDelegateKey);
     if (originalDelegate && [originalDelegate respondsToSelector:@selector(willPresentActionSheet:)]) {
         [originalDelegate willPresentActionSheet:actionSheet];
     }
@@ -252,7 +229,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         completion(actionSheet);
     }
     
-    id originalDelegate = objc_getAssociatedObject(self, &kUIActionSheetOriginalDelegateKey);
+    id originalDelegate = objc_getAssociatedObject(self, UIActionSheetOriginalDelegateKey);
     if (originalDelegate && [originalDelegate respondsToSelector:@selector(didPresentActionSheet:)]) {
         [originalDelegate didPresentActionSheet:actionSheet];
     }
@@ -265,7 +242,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         completion(actionSheet, buttonIndex);
     }
     
-    id originalDelegate = objc_getAssociatedObject(self, &kUIActionSheetOriginalDelegateKey);
+    id originalDelegate = objc_getAssociatedObject(self, UIActionSheetOriginalDelegateKey);
     if (originalDelegate && [originalDelegate respondsToSelector:@selector(actionSheet:clickedButtonAtIndex:)]) {
         [originalDelegate actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
     }
@@ -278,7 +255,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         completion(actionSheet);
     }
     
-    id originalDelegate = objc_getAssociatedObject(self, &kUIActionSheetOriginalDelegateKey);
+    id originalDelegate = objc_getAssociatedObject(self, UIActionSheetOriginalDelegateKey);
     if (originalDelegate && [originalDelegate respondsToSelector:@selector(actionSheetCancel:)]) {
         [originalDelegate actionSheetCancel:actionSheet];
     }
@@ -291,7 +268,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         completion(actionSheet, buttonIndex);
     }
     
-    id originalDelegate = objc_getAssociatedObject(self, &kUIActionSheetOriginalDelegateKey);
+    id originalDelegate = objc_getAssociatedObject(self, UIActionSheetOriginalDelegateKey);
     if (originalDelegate && [originalDelegate respondsToSelector:@selector(actionSheet:willDismissWithButtonIndex:)]) {
         [originalDelegate actionSheet:actionSheet willDismissWithButtonIndex:buttonIndex];
     }
@@ -304,7 +281,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         completion(actionSheet, buttonIndex);
     }
     
-    id originalDelegate = objc_getAssociatedObject(self, &kUIActionSheetOriginalDelegateKey);
+    id originalDelegate = objc_getAssociatedObject(self, UIActionSheetOriginalDelegateKey);
     if (originalDelegate && [originalDelegate respondsToSelector:@selector(actionSheet:didDismissWithButtonIndex:)]) {
         [originalDelegate actionSheet:actionSheet didDismissWithButtonIndex:buttonIndex];
     }
