@@ -24,16 +24,16 @@ You can create and show an action sheet in a single call, e.g.
 
 ```objc
 [UIActionSheet showInView:self.view
-                    withTitle:@"Are you sure you want to delete all the things?"
-            cancelButtonTitle:@"Cancel"
-       destructiveButtonTitle:@"Delete all the things"
-            otherButtonTitles:@[@"Just some of the things", @"Most of the things"]
-                     tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                         NSLog(@"Chose %@", [actionSheet buttonTitleAtIndex:buttonIndex]);
-                     }];
+                withTitle:@"Are you sure you want to delete all the things?"
+        cancelButtonTitle:@"Cancel"
+   destructiveButtonTitle:@"Delete all the things"
+        otherButtonTitles:@[@"Just some of the things", @"Most of the things"]
+                 tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                     NSLog(@"Chose %@", [actionSheet buttonTitleAtIndex:buttonIndex]);
+                 }];
 ```
 
-The full suite of action methods are supported, including `showFromTabBar:`, `showFromToolbar:`, `showInView:`, `showFromBarButtonItem:animated:` and `showFromRect:inView:animated`.
+The full suite of action methods are supported, including `showFromTabBar:`, `showFromToolbar:`, `showInView:`, `showFromBarButtonItem:animated:` and `showFromRect:inView:animated:`.
 
 If you need further customization, you can create and configure an action sheet as you usually would, and then assign blocks to the action sheet, e.g.
 
