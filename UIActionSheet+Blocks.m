@@ -259,7 +259,6 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"HERE");
     UIActionSheetCompletionBlock completion = actionSheet.tapBlock;
     
     if (completion) {
