@@ -8,21 +8,52 @@ UIActionSheet was created in a time before blocks, ARC, and judging by its namin
 Lets modernize this shizzle with some blocks goodness.
 
 ```objc
+typedef void (^UIActionSheetBlock) (UIActionSheet *actionSheet);
 typedef void (^UIActionSheetCompletionBlock) (UIActionSheet *actionSheet, NSInteger buttonIndex);
+
+@property (copy, nonatomic) UIActionSheetCompletionBlock tapBlock;
+@property (copy, nonatomic) UIActionSheetCompletionBlock willDismissBlock;
+@property (copy, nonatomic) UIActionSheetCompletionBlock didDismissBlock;
+
+@property (copy, nonatomic) UIActionSheetBlock willPresentBlock;
+@property (copy, nonatomic) UIActionSheetBlock didPresentBlock;
+@property (copy, nonatomic) UIActionSheetBlock cancelBlock;
 ```
 
-Create and show the action sheet in a single call:
+You can create and show an action sheet in a single call, e.g.
 
 ```objc
-+ (void)showInView:(UIView *)view
-         withTitle:(NSString *)title
- cancelButtonTitle:(NSString *)cancelButtonTitle
-destructiveButtonTitle:(NSString *)destructiveButtonTitle
- otherButtonTitles:(NSArray *)otherButtonTitles
-          tapBlock:(UIActionSheetCompletionBlock)tapBlock;
+[UIActionSheet showInView:self.view
+                    withTitle:@"Are you sure you want to delete all the things?"
+            cancelButtonTitle:@"Cancel"
+       destructiveButtonTitle:@"Delete all the things"
+            otherButtonTitles:@[@"Just some of the things", @"Most of the things"]
+                     tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                         NSLog(@"Chose %@", [actionSheet buttonTitleAtIndex:buttonIndex]);
+                     }];
 ```
 
 The full suite of action methods are supported, including `showFromTabBar:`, `showFromToolbar:`, `showInView:`, `showFromBarButtonItem:animated:` and `showFromRect:inView:animated`.
+
+If you need further customization, you can create and configure an action sheet as you usually would, and then assign blocks to the action sheet, e.g.
+
+```objc
+UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Choose a coffee"
+                                                delegate:nil
+                                       cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:@"Flat White", @"Latte", @"Cappuccino", @"Long Black", nil];
+
+as.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+
+as.tapBlock = ^(UIActionSheet *actionSheet, NSInteger buttonIndex){
+    NSLog(@"Chose %@", [actionSheet buttonTitleAtIndex:buttonIndex]);
+};
+
+[as showInView:self.view];
+```
+
+If a delegate was set on the action sheet, the delegate will be preserved and the blocks will be executed _before_ the delegate is called.
 
 ## Requirements
 
