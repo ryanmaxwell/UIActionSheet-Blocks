@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^UIActionSheetBlock) (UIActionSheet *actionSheet);
 typedef void (^UIActionSheetCompletionBlock) (UIActionSheet *actionSheet, NSInteger buttonIndex);
 
 @interface UIActionSheet (Blocks)
@@ -49,5 +50,13 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
 destructiveButtonTitle:(NSString *)destructiveButtonTitle
    otherButtonTitles:(NSArray *)otherButtonTitles
             tapBlock:(UIActionSheetCompletionBlock)tapBlock;
+
+@property (copy, nonatomic) UIActionSheetCompletionBlock tapBlock;
+@property (copy, nonatomic) UIActionSheetCompletionBlock willDismissBlock;
+@property (copy, nonatomic) UIActionSheetCompletionBlock didDismissBlock;
+
+@property (copy, nonatomic) UIActionSheetBlock willPresentBlock;
+@property (copy, nonatomic) UIActionSheetBlock didPresentBlock;
+@property (copy, nonatomic) UIActionSheetBlock cancelBlock;
 
 @end
