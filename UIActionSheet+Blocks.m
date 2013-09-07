@@ -43,6 +43,9 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
     }
     
     [actionSheet showFromTabBar:tabBar];
+#if !__has_feature(objc_arc)
+    [actionSheet release];
+#endif
 }
 
 + (void)showFromToolbar:(UIToolbar *)toolbar
@@ -67,6 +70,9 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
     }
     
     [actionSheet showFromToolbar:toolbar];
+#if !__has_feature(objc_arc)
+    [actionSheet release];
+#endif
 }
 
 + (void)showInView:(UIView *)view
@@ -91,6 +97,9 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
     }
     
     [actionSheet showInView:view];
+#if !__has_feature(objc_arc)
+    [actionSheet release];
+#endif
 }
 
 + (void)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem
@@ -116,6 +125,9 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
     }
     
     [actionSheet showFromBarButtonItem:barButtonItem animated:animated];
+#if !__has_feature(objc_arc)
+    [actionSheet release];
+#endif
 }
 
 + (void)showFromRect:(CGRect)rect
@@ -142,6 +154,9 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
     }
     
     [actionSheet showFromRect:rect inView:view animated:animated];
+#if !__has_feature(objc_arc)
+    [actionSheet release];
+#endif
 }
 
 #pragma mark -
