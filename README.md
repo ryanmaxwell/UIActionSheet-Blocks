@@ -57,7 +57,7 @@ If a delegate was set on the action sheet, the delegate will be preserved and th
 
 ## Requirements
 
-ARC - so iOS 4.3 or later
+Blocks - so iOS 4.0 and later. Compatible with both ARC and traditional retain/release code.
 
 ## Usage
 
