@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "UIActionSheetBlocks"
-  s.version      = "0.0.1"
+  s.version      = "0.5"
   s.summary      = "Category on UIActionSheet to use inline block callbacks instead of delegate callbacks."
 
   s.description  = <<-DESC
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Ryan Maxwell" => "ryanm@xwell.co.nz" }
   s.platform     = :ios, '4.3'
-  s.source       = { :git => "https://github.com/ryanmaxwell/UIActionSheetBlocks.git", :tag => "0.0.1" }
-  s.source_files = '*.{h,m}'
+  s.source       = { :git => "https://github.com/ryanmaxwell/UIActionSheetBlocks.git", :tag => "0.5" }
+  s.source_files = 'UIActionSheet+Blocks.{h,m}'
   s.requires_arc = true
 end
