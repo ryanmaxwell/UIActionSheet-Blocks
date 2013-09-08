@@ -1,4 +1,4 @@
-UIActionSheetBlocks
+UIActionSheet+Blocks
 ===================
 
 Category on UIActionSheet to use inline block callbacks instead of delegate callbacks.
@@ -61,8 +61,8 @@ Blocks - so iOS 4.0 and later. Compatible with both ARC and traditional retain/r
 
 ## Usage
 
-Add `UIActionSheet+Blocks.h/m` into your project, or `pod 'UIActionSheetBlocks'` using CocoaPods.
+Add `UIActionSheet+Blocks.h/m` into your project, or `pod 'UIActionSheet+Blocks'` using CocoaPods.
 
 ## Alert Views
 
-If you’d like similar functionality on UIAlertView too, check out twin-sister [UIAlertViewBlocks](https://github.com/ryanmaxwell/UIAlertViewBlocks).
+If you’d like similar functionality on UIAlertView too, check out twin-sister [UIAlertView+Blocks](https://github.com/ryanmaxwell/UIAlertView-Blocks).
