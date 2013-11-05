@@ -19,6 +19,10 @@ static const void *UIActionSheetWillDismissBlockKey = &UIActionSheetWillDismissB
 static const void *UIActionSheetDidDismissBlockKey  = &UIActionSheetDidDismissBlockKey;
 static const void *UIActionSheetCancelBlockKey      = &UIActionSheetCancelBlockKey;
 
+#define NSArrayObjectMaybeNil(__ARRAY__, __INDEX__) ((__INDEX__ >= [__ARRAY__ count]) ? nil : [__ARRAY__ objectAtIndex:__INDEX__])
+// This is a hack to turn an array into a variable argument list. There is no good way to expand arrays into variable argument lists in Objective-C. This works by nil-terminating the list as soon as we overstep the bounds of the array. The obvious glitch is that we only support a finite number of buttons.
+#define NSArrayToVariableArgumentsList(__ARRAYNAME__) NSArrayObjectMaybeNil(__ARRAYNAME__, 0), NSArrayObjectMaybeNil(__ARRAYNAME__, 1), NSArrayObjectMaybeNil(__ARRAYNAME__, 2), NSArrayObjectMaybeNil(__ARRAYNAME__, 3), NSArrayObjectMaybeNil(__ARRAYNAME__, 4), NSArrayObjectMaybeNil(__ARRAYNAME__, 5), NSArrayObjectMaybeNil(__ARRAYNAME__, 6), NSArrayObjectMaybeNil(__ARRAYNAME__, 7), NSArrayObjectMaybeNil(__ARRAYNAME__, 8), NSArrayObjectMaybeNil(__ARRAYNAME__, 9), nil
+
 @implementation UIActionSheet (Blocks)
 
 + (void)showFromTabBar:(UITabBar *)tabBar
@@ -32,12 +36,8 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
                                                     delegate:nil
                                            cancelButtonTitle:cancelButtonTitle
                                       destructiveButtonTitle:destructiveButtonTitle
-                                           otherButtonTitles:nil];
-    
-    for (NSString *buttonTitle in otherButtonTitles) {
-        [actionSheet addButtonWithTitle:buttonTitle];
-    }
-    
+                                           otherButtonTitles:NSArrayToVariableArgumentsList(otherButtonTitles)];
+
     if (tapBlock) {
         actionSheet.tapBlock = tapBlock;
     }
@@ -59,12 +59,8 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
                                                     delegate:nil
                                            cancelButtonTitle:cancelButtonTitle
                                       destructiveButtonTitle:destructiveButtonTitle
-                                           otherButtonTitles:nil];
-    
-    for (NSString *buttonTitle in otherButtonTitles) {
-        [actionSheet addButtonWithTitle:buttonTitle];
-    }
-    
+                                           otherButtonTitles:NSArrayToVariableArgumentsList(otherButtonTitles)];
+
     if (tapBlock) {
         actionSheet.tapBlock = tapBlock;
     }
@@ -86,12 +82,8 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
                                                     delegate:nil
                                            cancelButtonTitle:cancelButtonTitle
                                       destructiveButtonTitle:destructiveButtonTitle
-                                           otherButtonTitles:nil];
-    
-    for (NSString *buttonTitle in otherButtonTitles) {
-        [actionSheet addButtonWithTitle:buttonTitle];
-    }
-    
+                                           otherButtonTitles:NSArrayToVariableArgumentsList(otherButtonTitles)];
+
     if (tapBlock) {
         actionSheet.tapBlock = tapBlock;
     }
@@ -114,12 +106,8 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
                                                     delegate:nil
                                            cancelButtonTitle:cancelButtonTitle
                                       destructiveButtonTitle:destructiveButtonTitle
-                                           otherButtonTitles:nil];
-    
-    for (NSString *buttonTitle in otherButtonTitles) {
-        [actionSheet addButtonWithTitle:buttonTitle];
-    }
-    
+                                           otherButtonTitles:NSArrayToVariableArgumentsList(otherButtonTitles)];
+
     if (tapBlock) {
         actionSheet.tapBlock = tapBlock;
     }
@@ -143,12 +131,8 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
                                                     delegate:nil
                                            cancelButtonTitle:cancelButtonTitle
                                       destructiveButtonTitle:destructiveButtonTitle
-                                           otherButtonTitles:nil];
-    
-    for (NSString *buttonTitle in otherButtonTitles) {
-        [actionSheet addButtonWithTitle:buttonTitle];
-    }
-    
+                                           otherButtonTitles:NSArrayToVariableArgumentsList(otherButtonTitles)];
+
     if (tapBlock) {
         actionSheet.tapBlock = tapBlock;
     }
