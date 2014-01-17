@@ -25,12 +25,12 @@ static const void *UIActionSheetCancelBlockKey      = &UIActionSheetCancelBlockK
 
 @implementation UIActionSheet (Blocks)
 
-+ (void)showFromTabBar:(UITabBar *)tabBar
-             withTitle:(NSString *)title
-     cancelButtonTitle:(NSString *)cancelButtonTitle
-destructiveButtonTitle:(NSString *)destructiveButtonTitle
-     otherButtonTitles:(NSArray *)otherButtonTitles
-              tapBlock:(UIActionSheetCompletionBlock)tapBlock {
++ (instancetype)showFromTabBar:(UITabBar *)tabBar
+                     withTitle:(NSString *)title
+             cancelButtonTitle:(NSString *)cancelButtonTitle
+        destructiveButtonTitle:(NSString *)destructiveButtonTitle
+             otherButtonTitles:(NSArray *)otherButtonTitles
+                      tapBlock:(UIActionSheetCompletionBlock)tapBlock {
     
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title
                                                     delegate:nil
@@ -43,17 +43,20 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
     }
     
     [actionSheet showFromTabBar:tabBar];
+    
 #if !__has_feature(objc_arc)
-    [actionSheet release];
+    return [actionSheet autorelease];
+#else
+    return actionSheet;
 #endif
 }
 
-+ (void)showFromToolbar:(UIToolbar *)toolbar
-              withTitle:(NSString *)title
-      cancelButtonTitle:(NSString *)cancelButtonTitle
- destructiveButtonTitle:(NSString *)destructiveButtonTitle
-      otherButtonTitles:(NSArray *)otherButtonTitles
-               tapBlock:(UIActionSheetCompletionBlock)tapBlock {
++ (instancetype)showFromToolbar:(UIToolbar *)toolbar
+                      withTitle:(NSString *)title
+              cancelButtonTitle:(NSString *)cancelButtonTitle
+         destructiveButtonTitle:(NSString *)destructiveButtonTitle
+              otherButtonTitles:(NSArray *)otherButtonTitles
+                       tapBlock:(UIActionSheetCompletionBlock)tapBlock {
     
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title
                                                     delegate:nil
@@ -66,17 +69,20 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
     }
     
     [actionSheet showFromToolbar:toolbar];
+    
 #if !__has_feature(objc_arc)
-    [actionSheet release];
+    return [actionSheet autorelease];
+#else
+    return actionSheet;
 #endif
 }
 
-+ (void)showInView:(UIView *)view
-         withTitle:(NSString *)title
- cancelButtonTitle:(NSString *)cancelButtonTitle
-destructiveButtonTitle:(NSString *)destructiveButtonTitle
- otherButtonTitles:(NSArray *)otherButtonTitles
-          tapBlock:(UIActionSheetCompletionBlock)tapBlock {
++ (instancetype)showInView:(UIView *)view
+                 withTitle:(NSString *)title
+         cancelButtonTitle:(NSString *)cancelButtonTitle
+    destructiveButtonTitle:(NSString *)destructiveButtonTitle
+         otherButtonTitles:(NSArray *)otherButtonTitles
+                  tapBlock:(UIActionSheetCompletionBlock)tapBlock {
     
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title
                                                     delegate:nil
@@ -89,18 +95,21 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
     }
     
     [actionSheet showInView:view];
+    
 #if !__has_feature(objc_arc)
-    [actionSheet release];
+    return [actionSheet autorelease];
+#else
+    return actionSheet;
 #endif
 }
 
-+ (void)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem
-                     animated:(BOOL)animated
-                    withTitle:(NSString *)title
-            cancelButtonTitle:(NSString *)cancelButtonTitle
-       destructiveButtonTitle:(NSString *)destructiveButtonTitle
-            otherButtonTitles:(NSArray *)otherButtonTitles
-                     tapBlock:(UIActionSheetCompletionBlock)tapBlock {
++ (instancetype)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem
+                             animated:(BOOL)animated
+                            withTitle:(NSString *)title
+                    cancelButtonTitle:(NSString *)cancelButtonTitle
+               destructiveButtonTitle:(NSString *)destructiveButtonTitle
+                    otherButtonTitles:(NSArray *)otherButtonTitles
+                             tapBlock:(UIActionSheetCompletionBlock)tapBlock {
     
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title
                                                     delegate:nil
@@ -113,19 +122,22 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
     }
     
     [actionSheet showFromBarButtonItem:barButtonItem animated:animated];
+    
 #if !__has_feature(objc_arc)
-    [actionSheet release];
+    return [actionSheet autorelease];
+#else
+    return actionSheet;
 #endif
 }
 
-+ (void)showFromRect:(CGRect)rect
-              inView:(UIView *)view
-            animated:(BOOL)animated
-           withTitle:(NSString *)title
-   cancelButtonTitle:(NSString *)cancelButtonTitle
-destructiveButtonTitle:(NSString *)destructiveButtonTitle
-   otherButtonTitles:(NSArray *)otherButtonTitles
-            tapBlock:(UIActionSheetCompletionBlock)tapBlock {
++ (instancetype)showFromRect:(CGRect)rect
+                      inView:(UIView *)view
+                    animated:(BOOL)animated
+                   withTitle:(NSString *)title
+           cancelButtonTitle:(NSString *)cancelButtonTitle
+      destructiveButtonTitle:(NSString *)destructiveButtonTitle
+           otherButtonTitles:(NSArray *)otherButtonTitles
+                    tapBlock:(UIActionSheetCompletionBlock)tapBlock {
     
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title
                                                     delegate:nil
@@ -138,8 +150,11 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
     }
     
     [actionSheet showFromRect:rect inView:view animated:animated];
+    
 #if !__has_feature(objc_arc)
-    [actionSheet release];
+    return [actionSheet autorelease];
+#else
+    return actionSheet;
 #endif
 }
 
