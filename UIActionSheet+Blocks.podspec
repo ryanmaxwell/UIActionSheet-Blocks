@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
                    
   s.homepage     = "https://github.com/ryanmaxwell/UIActionSheet-Blocks"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
-  s.author       = { "Ryan Maxwell" => "ryanm@xwell.co.nz" }
+  s.author       = "Ryan Maxwell"
   s.platform     = :ios, '4.3'
   s.source       = { :git => "https://github.com/ryanmaxwell/UIActionSheet-Blocks.git", :tag => "0.8.1" }
   s.source_files = 'UIActionSheet+Blocks.{h,m}'
