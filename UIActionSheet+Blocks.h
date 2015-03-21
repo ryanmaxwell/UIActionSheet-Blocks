@@ -28,55 +28,55 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^UIActionSheetBlock) (UIActionSheet *actionSheet);
-typedef void (^UIActionSheetCompletionBlock) (UIActionSheet *actionSheet, NSInteger buttonIndex);
+typedef void (^UIActionSheetBlock) (UIActionSheet * __nonnull actionSheet);
+typedef void (^UIActionSheetCompletionBlock) (UIActionSheet * __nonnull actionSheet, NSInteger buttonIndex);
 
 @interface UIActionSheet (Blocks)
 
-+ (instancetype)showFromTabBar:(UITabBar *)tabBar
-                     withTitle:(NSString *)title
-             cancelButtonTitle:(NSString *)cancelButtonTitle
-        destructiveButtonTitle:(NSString *)destructiveButtonTitle
-             otherButtonTitles:(NSArray *)otherButtonTitles
-                      tapBlock:(UIActionSheetCompletionBlock)tapBlock;
++ (nonnull instancetype)showFromTabBar:(nonnull UITabBar *)tabBar
+                     withTitle:(nullable NSString *)title
+             cancelButtonTitle:(nullable NSString *)cancelButtonTitle
+        destructiveButtonTitle:(nullable NSString *)destructiveButtonTitle
+             otherButtonTitles:(nullable NSArray *)otherButtonTitles
+                      tapBlock:(nullable UIActionSheetCompletionBlock)tapBlock;
 
-+ (instancetype)showFromToolbar:(UIToolbar *)toolbar
-                      withTitle:(NSString *)title
-              cancelButtonTitle:(NSString *)cancelButtonTitle
-         destructiveButtonTitle:(NSString *)destructiveButtonTitle
-              otherButtonTitles:(NSArray *)otherButtonTitles
-                       tapBlock:(UIActionSheetCompletionBlock)tapBlock;
++ (nonnull instancetype)showFromToolbar:(nonnull UIToolbar *)toolbar
+                      withTitle:(nullable NSString *)title
+              cancelButtonTitle:(nullable NSString *)cancelButtonTitle
+         destructiveButtonTitle:(nullable NSString *)destructiveButtonTitle
+              otherButtonTitles:(nullable NSArray *)otherButtonTitles
+                       tapBlock:(nullable UIActionSheetCompletionBlock)tapBlock;
 
-+ (instancetype)showInView:(UIView *)view
-                 withTitle:(NSString *)title
-         cancelButtonTitle:(NSString *)cancelButtonTitle
-    destructiveButtonTitle:(NSString *)destructiveButtonTitle
-         otherButtonTitles:(NSArray *)otherButtonTitles
-                  tapBlock:(UIActionSheetCompletionBlock)tapBlock;
++ (nonnull instancetype)showInView:(nonnull UIView *)view
+                 withTitle:(nullable NSString *)title
+         cancelButtonTitle:(nullable NSString *)cancelButtonTitle
+    destructiveButtonTitle:(nullable NSString *)destructiveButtonTitle
+         otherButtonTitles:(nullable NSArray *)otherButtonTitles
+                  tapBlock:(nullable UIActionSheetCompletionBlock)tapBlock;
 
-+ (instancetype)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem
++ (nonnull instancetype)showFromBarButtonItem:(nonnull UIBarButtonItem *)barButtonItem
                              animated:(BOOL)animated
-                            withTitle:(NSString *)title
-                    cancelButtonTitle:(NSString *)cancelButtonTitle
-               destructiveButtonTitle:(NSString *)destructiveButtonTitle
-                    otherButtonTitles:(NSArray *)otherButtonTitles
-                             tapBlock:(UIActionSheetCompletionBlock)tapBlock;
+                            withTitle:(nullable NSString *)title
+                    cancelButtonTitle:(nullable NSString *)cancelButtonTitle
+               destructiveButtonTitle:(nullable NSString *)destructiveButtonTitle
+                    otherButtonTitles:(nullable NSArray *)otherButtonTitles
+                             tapBlock:(nullable UIActionSheetCompletionBlock)tapBlock;
 
-+ (instancetype)showFromRect:(CGRect)rect
-                      inView:(UIView *)view
++ (nonnull instancetype)showFromRect:(CGRect)rect
+                      inView:(nonnull UIView *)view
                     animated:(BOOL)animated
-                   withTitle:(NSString *)title
-           cancelButtonTitle:(NSString *)cancelButtonTitle
-      destructiveButtonTitle:(NSString *)destructiveButtonTitle
-           otherButtonTitles:(NSArray *)otherButtonTitles
-                    tapBlock:(UIActionSheetCompletionBlock)tapBlock;
+                   withTitle:(nullable NSString *)title
+           cancelButtonTitle:(nullable NSString *)cancelButtonTitle
+      destructiveButtonTitle:(nullable NSString *)destructiveButtonTitle
+           otherButtonTitles:(nullable NSArray *)otherButtonTitles
+                    tapBlock:(nullable UIActionSheetCompletionBlock)tapBlock;
 
-@property (copy, nonatomic) UIActionSheetCompletionBlock tapBlock;
-@property (copy, nonatomic) UIActionSheetCompletionBlock willDismissBlock;
-@property (copy, nonatomic) UIActionSheetCompletionBlock didDismissBlock;
+@property (copy, nonatomic, nullable) UIActionSheetCompletionBlock tapBlock;
+@property (copy, nonatomic, nullable) UIActionSheetCompletionBlock willDismissBlock;
+@property (copy, nonatomic, nullable) UIActionSheetCompletionBlock didDismissBlock;
 
-@property (copy, nonatomic) UIActionSheetBlock willPresentBlock;
-@property (copy, nonatomic) UIActionSheetBlock didPresentBlock;
-@property (copy, nonatomic) UIActionSheetBlock cancelBlock;
+@property (copy, nonatomic, nullable) UIActionSheetBlock willPresentBlock;
+@property (copy, nonatomic, nullable) UIActionSheetBlock didPresentBlock;
+@property (copy, nonatomic, nullable) UIActionSheetBlock cancelBlock;
 
 @end
