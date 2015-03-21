@@ -24,7 +24,7 @@
        destructiveButtonTitle:@"Delete"
             otherButtonTitles:@[@"One", @"Two", @"Three"]
                      tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex){
-                         NSLog(@"Tapped '%@' at index %d", [actionSheet buttonTitleAtIndex:buttonIndex], buttonIndex);
+                         NSLog(@"Tapped '%@' at index %ld", [actionSheet buttonTitleAtIndex:buttonIndex], (long)buttonIndex);
                      }];
 }
 
