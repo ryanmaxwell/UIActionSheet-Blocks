@@ -58,7 +58,8 @@ If a delegate was set on the action sheet, the delegate will be preserved and th
 ## Requirements
 
 Blocks - so iOS 4.0 and later. Compatible with both ARC and traditional retain/release code.
-The headers use the new Objective-C [nullability annotations](https://developer.apple.com/swift/blog/?id=25) for nicer interoperability with Swift, so you will need Xcode 6.3 or later to compile it.
+
+Since version 0.9 the headers use the new Objective-C [nullability annotations](https://developer.apple.com/swift/blog/?id=25) for nicer interoperability with Swift, so you will need Xcode 6.3 or later to compile it.
 
 ## Usage
 
