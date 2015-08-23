@@ -63,7 +63,8 @@ Since version 0.9 the headers use the new Objective-C [nullability annotations](
 
 ## Usage
 
-Add `UIActionSheet+Blocks.h/m` into your project, or `pod 'UIActionSheet+Blocks'` using CocoaPods.
+Add `UIActionSheet+Blocks.h/m` into your project, or `pod 'UIActionSheet+Blocks'` using CocoaPods. 
+In your code, either `#import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>` (Objective-C header), `@import UIActionSheet_Blocks;` (Objective-C module), or `import UIActionSheet_Blocks` (Swift).
 
 ## Alert Views
 
